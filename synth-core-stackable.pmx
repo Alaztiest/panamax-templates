@@ -28,7 +28,7 @@ documentation: |-
   # Images used
 
   tutum/mysql:latest				The most popular and easy to use mysql image on docker hub.
-  tayloredtechnology/wordpress-nginx-hhvm:latest		A WordPress images that can connect to other database like MySQL, MariaDB.
+  tayloredtechnology/startup-booster:latest		A WordPress images that can connect to other database like MySQL, MariaDB.
   tutum/haproxy:latest				A well maintained load balancer, easy to use by simply linking to it.
   
   # Setup and access
@@ -78,7 +78,7 @@ images:
     container_path: "/tmp/docker.sock"
 - category: keidrych
   name: keidrych
-  source: tayloredtechnology/wordpress-nginx-hhvm:latest
+  source: tayloredtechnology/startup-booster:latest
   description: 
   type: Default
   expose: []
@@ -112,7 +112,7 @@ images:
   volumes: []
 - category: luvurday
   name: luvurday
-  source: tayloredtechnology/wordpress-nginx-hhvm:latest
+  source: tayloredtechnology/startup-booster:latest
   description: 
   type: Default
   expose: []
