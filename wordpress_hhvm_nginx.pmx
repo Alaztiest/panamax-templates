@@ -59,10 +59,12 @@ images:
   environment:
   - variable: MYSQL_PASS
     value: password
-  volumes: []
+  volumes:
+  - host_path: "/var/persistence"
+    container_path: "/var/lib/mysql"
 - category: Application Tier
   name: wp1
-  source: tayloredtechnology/wordpress-nginx-hhvm:v1
+  source: tayloredtechnology/wordpress-nginx-hhvm:latest
   description: 
   type: Default
   expose: []
@@ -73,22 +75,8 @@ images:
   environment: 
   - variable: DB_PASS
     value: password
-  volumes:
-  - host_path: "/home"
-    container_path: "/app/wp-content"
-- category: Application Tier
-  name: wp2
-  source: tayloredtechnology/wordpress-nginx-hhvm:v1
-  description: 
-  type: Default
-  expose: []
-  ports: []
-  links:
-  - service: db
-    alias: db
-  environment: 
-  - variable: DB_PASS
-    value: password
+  - variable: DB_HOST
+    value: db
   volumes:
   - host_path: "/home"
     container_path: "/app/wp-content"
@@ -104,7 +92,5 @@ images:
   links:
   - service: wp1
     alias: wp1
-  - service: wp2
-    alias: wp2  
   environment: []
   volumes: []
