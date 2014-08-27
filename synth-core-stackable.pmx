@@ -94,3 +94,18 @@ images:
   - variable: DB_NAME
     value: keidrych
   volumes: []
+  name: synth keidrych
+  source: tutum/haproxy:latest
+  description: 
+  type: Default
+  expose: ['4755']
+  ports:
+  - host_port: '4755'
+    container_port: '80'
+  links:
+  - service: keidrych
+    alias: keidrych
+  environment: 
+  - variable: VIRTUAL_HOST
+    value: www.keidrych.com,keidrych.com
+  volumes: []
