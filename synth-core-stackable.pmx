@@ -76,7 +76,7 @@ images:
   volumes:
   - host_path: "/var/run/docker.sock"
     container_path: "/tmp/docker.sock"
-- category: keidrych.com
+- category: keidrych
   name: keidrych
   source: tayloredtechnology/startup-booster:latest
   description: 
@@ -94,7 +94,7 @@ images:
   - variable: DB_NAME
     value: keidrych
   volumes: []
-- category: keidrych.com
+- category: keidrych
   name: synth-keidrych
   source: tutum/haproxy:latest
   description: 
@@ -106,7 +106,41 @@ images:
   links:
   - service: keidrych
     alias: keidrych
-  environment: 
+  environment:
   - variable: VIRTUAL_HOST
     value: www.keidrych.com,keidrych.com
+  volumes: []
+- category: luvurday
+  name: luvurday
+  source: tayloredtechnology/startup-booster:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: db
+    alias: db
+  environment: 
+  - variable: DB_PASS
+    value: password
+  - variable: DB_HOST
+    value: db
+  - variable: DB_NAME
+    value: luvurday
+  volumes: []
+- category: luvurday
+  name: synth-luvurday
+  source: tutum/haproxy:latest
+  description: 
+  type: Default
+  expose: ['4751']
+  ports:
+  - host_port: '4751'
+    container_port: '80'
+  links:
+  - service: luvurday
+    alias: luvurday
+  environment:
+  - variable: VIRTUAL_HOST
+    value: www.luvurday.com,luvurday.com,www.luvurday.com.au,luvurday.com.au
   volumes: []
