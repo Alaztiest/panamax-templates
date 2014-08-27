@@ -105,7 +105,5 @@ images:
   links:
   - service: keidrych
     alias: keidrych
-  environment:
-  - variable: VIRTUAL_HOST
-    value: 'www.keidrych.com,keidrych.com'
+  environment: []
   volumes: []
