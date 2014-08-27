@@ -76,3 +76,21 @@ images:
   volumes:
   - host_path: "/var/run/docker.sock"
     container_path: "/tmp/docker.sock"
+- category: keidrych
+  name: keidrych
+  source: tayloredtechnology/startup-booster:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: db
+    alias: db
+  environment: 
+  - variable: DB_PASS
+    value: password
+  - variable: DB_HOST
+    value: db
+  - variable: DB_NAME
+    value: keidrych
+  volumes: []
