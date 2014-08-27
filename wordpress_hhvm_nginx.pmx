@@ -60,11 +60,25 @@ images:
   - variable: MYSQL_PASS
     value: password
   volumes:
-  - host_path: "/var/persistence"
+  - host_path: "/var/persistence/mysql"
     container_path: "/var/lib/mysql"
-- category: Application Tier
-  name: wp1
-  source: tayloredtechnology/wordpress-nginx-hhvm:latest
+- category: Reverse Proxy
+  name: Reverse Proxy
+  source: jwilder/nginx-proxy:latest
+  description: 
+  type: Default
+  expose: ['80']
+  ports:
+  - host_port: '80'
+    container_port: '80'
+  links: []
+  environment: []
+  volumes:
+  - host_path: "/var/run/docker.sock"
+    container_path: "/tmp/docker.sock"
+- category: keidrych.com
+  name: keidrych.com
+  source: tayloredtechnology/startup-booster:latest
   description: 
   type: Default
   expose: []
@@ -77,20 +91,54 @@ images:
     value: password
   - variable: DB_HOST
     value: db
-  volumes:
-  - host_path: "/home"
-    container_path: "/app/wp-content"
-- category: Load Balancer Tier
-  name: lb
+  - variable: DB_NAME
+    value: keidrych
+  volumes: []
+  name: synth-keidrych.com
   source: tutum/haproxy:latest
   description: 
   type: Default
-  expose: []
+  expose: ['4755']
   ports:
   - host_port: '4755'
     container_port: '80'
   links:
-  - service: wp1
-    alias: wp1
-  environment: []
+  - service: keidrych.com
+    alias: keidrych.com
+  environment:
+  - variable: VIRTUAL_HOST
+    value: www.keidrych.com,keidrych.com
+  volumes: []
+- category: luvurday.com
+  name: luvurday.com
+  source: tayloredtechnology/startup-booster:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: db
+    alias: db
+  environment: 
+  - variable: DB_PASS
+    value: password
+  - variable: DB_HOST
+    value: db
+  - variable: DB_NAME
+    value: luvurday
+  volumes: []
+  name: synth-luvurday.com
+  source: tutum/haproxy:latest
+  description: 
+  type: Default
+  expose: ['4751']
+  ports:
+  - host_port: '4751'
+    container_port: '80'
+  links:
+  - service: luvurday.com
+    alias: luvurday.com
+  environment:
+  - variable: VIRTUAL_HOST
+    value: www.luvurday.com,luvurday.com,www.luvurday.com.au,luvurday.com.au
   volumes: []
