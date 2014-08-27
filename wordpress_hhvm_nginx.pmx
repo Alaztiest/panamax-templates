@@ -85,7 +85,7 @@ images:
   ports: []
   links:
   - service: db
-    alias: []
+    alias: db
   environment: 
   - variable: DB_PASS
     value: password
