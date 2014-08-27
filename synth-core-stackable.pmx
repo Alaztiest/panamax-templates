@@ -94,7 +94,8 @@ images:
   - variable: DB_NAME
     value: keidrych
   volumes: []
-  name: synth keidrych
+- category: keidrych.com
+  name: synth-keidrych
   source: tutum/haproxy:latest
   description: 
   type: Default
