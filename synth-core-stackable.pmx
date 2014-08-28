@@ -94,6 +94,14 @@ images:
     alias: 3~keidrych
   - service: 4~keidrych
     alias: 4~keidrych
+  - service: 5~keidrych
+    alias: 5~keidrych
+  - service: 6~keidrych
+    alias: 6~keidrych
+  - service: 7~keidrych
+    alias: 7~keidrych
+  - service: 8~keidrych
+    alias: 8~keidrych
   environment:
   - variable: VIRTUAL_HOST
     value: www.keidrych.com,keidrych.com
@@ -160,6 +168,86 @@ images:
     container_path: "/mnt/hhvm/public/wp-content/"
 - category: keidrych
   name: 4~keidrych
+  source: tayloredtechnology/startup-booster:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: db
+    alias: db
+  environment: 
+  - variable: DB_PASS
+    value: password
+  - variable: DB_HOST
+    value: db
+  - variable: DB_NAME
+    value: keidrych
+  volumes:
+  - host_path: "/var/persistence/wp-content/keidrych"
+    container_path: "/mnt/hhvm/public/wp-content/"
+- category: keidrych
+  name: 5~keidrych
+  source: tayloredtechnology/startup-booster:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: db
+    alias: db
+  environment: 
+  - variable: DB_PASS
+    value: password
+  - variable: DB_HOST
+    value: db
+  - variable: DB_NAME
+    value: keidrych
+  volumes:
+  - host_path: "/var/persistence/wp-content/keidrych"
+    container_path: "/mnt/hhvm/public/wp-content/"
+- category: keidrych
+  name: 6~keidrych
+  source: tayloredtechnology/startup-booster:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: db
+    alias: db
+  environment: 
+  - variable: DB_PASS
+    value: password
+  - variable: DB_HOST
+    value: db
+  - variable: DB_NAME
+    value: keidrych
+  volumes:
+  - host_path: "/var/persistence/wp-content/keidrych"
+    container_path: "/mnt/hhvm/public/wp-content/"
+- category: keidrych
+  name: 7~keidrych
+  source: tayloredtechnology/startup-booster:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: db
+    alias: db
+  environment: 
+  - variable: DB_PASS
+    value: password
+  - variable: DB_HOST
+    value: db
+  - variable: DB_NAME
+    value: keidrych
+  volumes:
+  - host_path: "/var/persistence/wp-content/keidrych"
+    container_path: "/mnt/hhvm/public/wp-content/"
+- category: keidrych
+  name: 8~keidrych
   source: tayloredtechnology/startup-booster:latest
   description: 
   type: Default
