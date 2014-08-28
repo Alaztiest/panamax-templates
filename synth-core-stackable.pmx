@@ -77,23 +77,7 @@ images:
   - host_path: "/var/run/docker.sock"
     container_path: "/tmp/docker.sock"
 - category: keidrych
-  name: synth-keidrych
-  source: tutum/haproxy:latest
-  description: 
-  type: Default
-  expose: ['4755']
-  ports:
-  - host_port: '4755'
-    container_port: '80'
-  links:
-  - service: keidrych
-    alias: keidrych
-  environment:
-  - variable: VIRTUAL_HOST
-    value: www.keidrych.com,keidrych.com
-  volumes: []
-- category: keidrych
-  name: 1-keidrych
+  name: 1~keidrych
   source: tayloredtechnology/startup-booster:latest
   description: 
   type: Default
@@ -111,7 +95,23 @@ images:
     value: keidrych
   volumes: []
   - host_path: "/var/persistence/keidrych"
-    container_path: "/mnt/hhvm/public/wp-content"
+    container_path: "/mnt/hhvm/public/wp-content/"
+- category: keidrych
+  name: synth-keidrych
+  source: tutum/haproxy:latest
+  description: 
+  type: Default
+  expose: ['4755']
+  ports:
+  - host_port: '4755'
+    container_port: '80'
+  links:
+  - service: 1~keidrych
+    alias: 1~keidrych
+  environment:
+  - variable: VIRTUAL_HOST
+    value: www.keidrych.com,keidrych.com
+  volumes: []
 - category: luvurday
   name: luvurday
   source: tayloredtechnology/startup-booster:latest
