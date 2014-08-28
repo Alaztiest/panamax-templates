@@ -116,7 +116,7 @@ images:
   - variable: DB_NAME
     value: keidrych
   volumes:
-  - host_path: "/var/ persistence/media-files/keidrych"
+  - host_path: "/var/persistence/media-files/keidrych"
     container_path: "/mnt/hhvm/public/wp-content/uploads"
 - category: keidrych
   name: 2~keidrych
@@ -136,7 +136,7 @@ images:
   - variable: DB_NAME
     value: keidrych
   volumes:
-  - host_path: "/var/ persistence/media-files/keidrych"
+  - host_path: "/var/persistence/media-files/keidrych"
     container_path: "/mnt/hhvm/public/wp-content/uploads"
 - category: keidrych
   name: 3~keidrych
@@ -156,7 +156,7 @@ images:
   - variable: DB_NAME
     value: keidrych
   volumes:
-  - host_path: "/var/ persistence/media-files/keidrych"
+  - host_path: "/var/persistence/media-files/keidrych"
     container_path: "/mnt/hhvm/public/wp-content/uploads"
 - category: keidrych
   name: 4~keidrych
@@ -176,7 +176,7 @@ images:
   - variable: DB_NAME
     value: keidrych
   volumes:
-  - host_path: "/var/ persistence/media-files/keidrych"
+  - host_path: "/var/persistence/media-files/keidrych"
     container_path: "/mnt/hhvm/public/wp-content/uploads"
 - category: luvurday
   name: luvurday
