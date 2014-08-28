@@ -77,7 +77,7 @@ images:
   - host_path: "/var/run/docker.sock"
     container_path: "/tmp/docker.sock"
 - category: keidrych
-  name: 1~keidrych
+  name: keidrych1
   source: tayloredtechnology/startup-booster:latest
   description: 
   type: Default
@@ -106,8 +106,8 @@ images:
   - host_port: '4755'
     container_port: '80'
   links:
-  - service: 1~keidrych
-    alias: 1~keidrych
+  - service: keidrych1
+    alias: keidrych1
   environment:
   - variable: VIRTUAL_HOST
     value: www.keidrych.com,keidrych.com
