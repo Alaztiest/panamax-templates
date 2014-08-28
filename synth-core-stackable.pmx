@@ -123,9 +123,7 @@ images:
     value: db
   - variable: DB_NAME
     value: keidrych
-  volumes:
-  - host_path: "/var/persistence/wp-content/keidrych"
-    container_path: "/mnt/hhvm/public/wp-content/"
+  volumes: []
 - category: keidrych
   name: 2~keidrych
   source: tayloredtechnology/startup-booster:latest
@@ -143,9 +141,7 @@ images:
     value: db
   - variable: DB_NAME
     value: keidrych
-  volumes:
-  - host_path: "/var/persistence/wp-content/keidrych"
-    container_path: "/mnt/hhvm/public/wp-content/"
+  volumes: []
 - category: keidrych
   name: 3~keidrych
   source: tayloredtechnology/startup-booster:latest
@@ -163,9 +159,7 @@ images:
     value: db
   - variable: DB_NAME
     value: keidrych
-  volumes:
-  - host_path: "/var/persistence/wp-content/keidrych"
-    container_path: "/mnt/hhvm/public/wp-content/"
+  volumes: []
 - category: keidrych
   name: 4~keidrych
   source: tayloredtechnology/startup-booster:latest
@@ -183,9 +177,7 @@ images:
     value: db
   - variable: DB_NAME
     value: keidrych
-  volumes:
-  - host_path: "/var/persistence/wp-content/keidrych"
-    container_path: "/mnt/hhvm/public/wp-content/"
+  volumes: []
 - category: keidrych
   name: 5~keidrych
   source: tayloredtechnology/startup-booster:latest
@@ -203,9 +195,7 @@ images:
     value: db
   - variable: DB_NAME
     value: keidrych
-  volumes:
-  - host_path: "/var/persistence/wp-content/keidrych"
-    container_path: "/mnt/hhvm/public/wp-content/"
+  volumes: []
 - category: keidrych
   name: 6~keidrych
   source: tayloredtechnology/startup-booster:latest
@@ -223,9 +213,7 @@ images:
     value: db
   - variable: DB_NAME
     value: keidrych
-  volumes:
-  - host_path: "/var/persistence/wp-content/keidrych"
-    container_path: "/mnt/hhvm/public/wp-content/"
+  volumes: []
 - category: keidrych
   name: 7~keidrych
   source: tayloredtechnology/startup-booster:latest
@@ -243,9 +231,7 @@ images:
     value: db
   - variable: DB_NAME
     value: keidrych
-  volumes:
-  - host_path: "/var/persistence/wp-content/keidrych"
-    container_path: "/mnt/hhvm/public/wp-content/"
+  volumes: []
 - category: keidrych
   name: 8~keidrych
   source: tayloredtechnology/startup-booster:latest
@@ -263,6 +249,4 @@ images:
     value: db
   - variable: DB_NAME
     value: keidrych
-  volumes:
-  - host_path: "/var/persistence/wp-content/keidrych"
-    container_path: "/mnt/hhvm/public/wp-content/"
+  volumes: []
