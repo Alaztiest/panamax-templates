@@ -76,24 +76,8 @@ images:
   volumes:
   - host_path: "/var/run/docker.sock"
     container_path: "/tmp/docker.sock"
-- category: keidrych
-  name: keidrych
-  source: tayloredtechnology/startup-booster:latest
-  description: 
-  type: Default
-  expose: []
-  ports: []
-  links:
-  - service: db
-    alias: db
-  environment: 
-  - variable: DB_PASS
-    value: password
-  - variable: DB_HOST
-    value: db
-  - variable: DB_NAME
-    value: keidrych
-  volumes: []
+
+
 - category: keidrych
   name: synth-keidrych
   source: tutum/haproxy:latest
@@ -110,6 +94,86 @@ images:
   - variable: VIRTUAL_HOST
     value: www.keidrych.com,keidrych.com
   volumes: []
+- category: keidrych
+  name: 1~keidrych
+  source: tayloredtechnology/startup-booster:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: db
+    alias: db
+  environment: 
+  - variable: DB_PASS
+    value: password
+  - variable: DB_HOST
+    value: db
+  - variable: DB_NAME
+    value: keidrych
+  volumes: []
+  - host_path: "/var/persistence/keidrych"
+    container_path: "/mnt/hhvm/public/wp-content"
+- category: keidrych
+  name: 2~keidrych
+  source: tayloredtechnology/startup-booster:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: db
+    alias: db
+  environment: 
+  - variable: DB_PASS
+    value: password
+  - variable: DB_HOST
+    value: db
+  - variable: DB_NAME
+    value: keidrych
+  volumes: []
+  - host_path: "/var/persistence/keidrych"
+    container_path: "/mnt/hhvm/public/wp-content"
+- category: keidrych
+  name: 3~keidrych
+  source: tayloredtechnology/startup-booster:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: db
+    alias: db
+  environment: 
+  - variable: DB_PASS
+    value: password
+  - variable: DB_HOST
+    value: db
+  - variable: DB_NAME
+    value: keidrych
+  volumes: []
+  - host_path: "/var/persistence/keidrych"
+    container_path: "/mnt/hhvm/public/wp-content"
+- category: keidrych
+  name: 4~keidrych
+  source: tayloredtechnology/startup-booster:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: db
+    alias: db
+  environment: 
+  - variable: DB_PASS
+    value: password
+  - variable: DB_HOST
+    value: db
+  - variable: DB_NAME
+    value: keidrych
+  volumes: []
+  - host_path: "/var/persistence/keidrych"
+    container_path: "/mnt/hhvm/public/wp-content"
 - category: luvurday
   name: luvurday
   source: tayloredtechnology/startup-booster:latest
