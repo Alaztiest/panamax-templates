@@ -95,7 +95,7 @@ images:
     value: www.keidrych.com,keidrych.com
   volumes: []
 - category: keidrych
-  name: 1~keidrych
+  name: 1 keidrych
   source: tayloredtechnology/startup-booster:latest
   description: 
   type: Default
@@ -115,7 +115,7 @@ images:
   - host_path: "/var/persistence/keidrych"
     container_path: "/mnt/hhvm/public/wp-content"
 - category: keidrych
-  name: 2~keidrych
+  name: 2 keidrych
   source: tayloredtechnology/startup-booster:latest
   description: 
   type: Default
@@ -135,7 +135,7 @@ images:
   - host_path: "/var/persistence/keidrych"
     container_path: "/mnt/hhvm/public/wp-content"
 - category: keidrych
-  name: 3~keidrych
+  name: 3 keidrych
   source: tayloredtechnology/startup-booster:latest
   description: 
   type: Default
@@ -155,7 +155,7 @@ images:
   - host_path: "/var/persistence/keidrych"
     container_path: "/mnt/hhvm/public/wp-content"
 - category: keidrych
-  name: 4~keidrych
+  name: 4 keidrych
   source: tayloredtechnology/startup-booster:latest
   description: 
   type: Default
