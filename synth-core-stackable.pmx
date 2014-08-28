@@ -116,8 +116,8 @@ images:
   - variable: DB_NAME
     value: keidrych
   volumes:
-  - host_path: "/var/persistence/keidrych"
-    container_path: "/mnt/hhvm/public/wp-content/"
+  - host_path: "/var/ persistence/media-files/keidrych"
+    container_path: "/mnt/hhvm/public/wp-content/uploads"
 - category: keidrych
   name: 2~keidrych
   source: tayloredtechnology/startup-booster:latest
@@ -136,8 +136,8 @@ images:
   - variable: DB_NAME
     value: keidrych
   volumes:
-  - host_path: "/var/persistence/keidrych"
-    container_path: "/mnt/hhvm/public/wp-content/"
+  - host_path: "/var/ persistence/media-files/keidrych"
+    container_path: "/mnt/hhvm/public/wp-content/uploads"
 - category: keidrych
   name: 3~keidrych
   source: tayloredtechnology/startup-booster:latest
@@ -156,8 +156,8 @@ images:
   - variable: DB_NAME
     value: keidrych
   volumes:
-  - host_path: "/var/persistence/keidrych"
-    container_path: "/mnt/hhvm/public/wp-content/"
+  - host_path: "/var/ persistence/media-files/keidrych"
+    container_path: "/mnt/hhvm/public/wp-content/uploads"
 - category: keidrych
   name: 4~keidrych
   source: tayloredtechnology/startup-booster:latest
@@ -176,8 +176,8 @@ images:
   - variable: DB_NAME
     value: keidrych
   volumes:
-  - host_path: "/var/persistence/keidrych"
-    container_path: "/mnt/hhvm/public/wp-content/"
+  - host_path: "/var/ persistence/media-files/keidrych"
+    container_path: "/mnt/hhvm/public/wp-content/uploads"
 - category: luvurday
   name: luvurday
   source: tayloredtechnology/startup-booster:latest
