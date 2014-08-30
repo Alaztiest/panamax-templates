@@ -92,3 +92,27 @@ images:
   volumes:
   - host_path: "/var/persistence/mysql"
     container_path: "/var/lib/mysql"
+- category: WebSites
+  name: keidrych
+  source: tayloredtechnology/startup-booster:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: db
+    alias: db
+  - service: memcached
+    alias: memcached
+  environment: 
+  - variable: DB_PASS
+    value: password
+  - variable: DB_HOST
+    value: db
+  - variable: DB_NAME
+    value: keidrych
+  - variable: VIRTUAL_HOST
+    value: www.keidrych.com,keidrych.com,migrate.keidrych.com
+  volumes:
+  - host_path: "/var/persistence/keidrych/wp-content"
+    container_path: "/mnt/hhvm/public/wp-content/"
