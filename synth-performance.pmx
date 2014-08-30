@@ -1,4 +1,4 @@
-name: Synth Core
+name: Synth Performance
 description: A Wordpress that can scale horizontally and is load balanced using HAProxy
 keywords: wordpress, mysql, haproxy, horizontal scaling
 recommended: false
@@ -48,36 +48,6 @@ documentation: |-
 authors:
 - ''
 images:
-- category: System Utilities
-  name: Reverse Proxy
-  source: jwilder/nginx-proxy:latest
-  description: 
-  type: Default
-  expose: ['80']
-  ports:
-  - host_port: '80'
-    container_port: '80'
-  links: []
-  environment: []
-  volumes:
-  - host_path: "/var/run/docker.sock"
-    container_path: "/tmp/docker.sock"
-- category: System Utilities
-  name: memcached
-  source: sylvainlasnier/memcached:latest
-  description: 
-  type: Default
-  expose: ['11211']
-  ports:
-  - host_port: '11211'
-    container_port: '11211'
-  links: []
-  environment:
-   - variable: MAX_CONN
-    value: 512    
-   - variable: MAX_MEM
-    value: 64
-  volumes: []
 - category: DB Tier
   name: db
   source: tutum/mysql:latest
@@ -92,8 +62,52 @@ images:
   volumes:
   - host_path: "/var/persistence/mysql"
     container_path: "/var/lib/mysql"
-- category: WebSites
-  name: keidrych
+- category: Reverse Proxy
+  name: Reverse Proxy
+  source: jwilder/nginx-proxy:latest
+  description: 
+  type: Default
+  expose: ['80']
+  ports:
+  - host_port: '80'
+    container_port: '80'
+  links: []
+  environment: []
+  volumes:
+  - host_path: "/var/run/docker.sock"
+    container_path: "/tmp/docker.sock"
+- category: keidrych
+  name: synth-keidrych
+  source: tutum/haproxy:latest
+  description: 
+  type: Default
+  expose: ['4755']
+  ports:
+  - host_port: '4755'
+    container_port: '80'
+  links:
+  - service: 1~keidrych
+    alias: 1~keidrych
+  - service: 2~keidrych
+    alias: 2~keidrych
+  - service: 3~keidrych
+    alias: 3~keidrych
+  - service: 4~keidrych
+    alias: 4~keidrych
+  - service: 5~keidrych
+    alias: 5~keidrych
+  - service: 6~keidrych
+    alias: 6~keidrych
+  - service: 7~keidrych
+    alias: 7~keidrych
+  - service: 8~keidrych
+    alias: 8~keidrych
+  environment:
+  - variable: VIRTUAL_HOST
+    value: www.keidrych.com,keidrych.com
+  volumes: []
+- category: keidrych
+  name: 1~keidrych
   source: tayloredtechnology/startup-booster:latest
   description: 
   type: Default
@@ -102,8 +116,6 @@ images:
   links:
   - service: db
     alias: db
-  - service: memcached
-    alias: memcached
   environment: 
   - variable: DB_PASS
     value: password
@@ -111,13 +123,9 @@ images:
     value: db
   - variable: DB_NAME
     value: keidrych
-  - variable: VIRTUAL_HOST
-    value: www.keidrych.com,keidrych.com,migrate.keidrych.com
-  volumes:
-  - host_path: "/var/persistence/keidrych/wp-content"
-    container_path: "/mnt/hhvm/public/wp-content/"
-- category: WebSites
-  name: tayloredtechnology
+  volumes: []
+- category: keidrych
+  name: 2~keidrych
   source: tayloredtechnology/startup-booster:latest
   description: 
   type: Default
@@ -126,22 +134,16 @@ images:
   links:
   - service: db
     alias: db
-  - service: memcached
-    alias: memcached
   environment: 
   - variable: DB_PASS
     value: password
   - variable: DB_HOST
     value: db
   - variable: DB_NAME
-    value: tt
-  - variable: VIRTUAL_HOST
-    value: tayloredtechnology.net,www.tayloredtechnology.net,migrate.tayloredtechnology.net
-  volumes:
-  - host_path: "/var/persistence/tayloredtechnology/wp-content"
-    container_path: "/mnt/hhvm/public/wp-content/"
-- category: WebSites
-  name: tayloredtechnology~espial
+    value: keidrych
+  volumes: []
+- category: keidrych
+  name: 3~keidrych
   source: tayloredtechnology/startup-booster:latest
   description: 
   type: Default
@@ -150,22 +152,16 @@ images:
   links:
   - service: db
     alias: db
-  - service: memcached
-    alias: memcached
   environment: 
   - variable: DB_PASS
     value: password
   - variable: DB_HOST
     value: db
   - variable: DB_NAME
-    value: ttespial
-  - variable: VIRTUAL_HOST
-    value: espial.tayloredtechnology.net,migrate-espial.tayloredtechnology.net
-  volumes:
-  - host_path: "/var/persistence/tayloredtechnology/espial/wp-content"
-    container_path: "/mnt/hhvm/public/wp-content/"
-- category: WebSites
-  name: tayloredtechnology~moments
+    value: keidrych
+  volumes: []
+- category: keidrych
+  name: 4~keidrych
   source: tayloredtechnology/startup-booster:latest
   description: 
   type: Default
@@ -174,22 +170,16 @@ images:
   links:
   - service: db
     alias: db
-  - service: memcached
-    alias: memcached
   environment: 
   - variable: DB_PASS
     value: password
   - variable: DB_HOST
     value: db
   - variable: DB_NAME
-    value: ttmoments
-  - variable: VIRTUAL_HOST
-    value: moments.tayloredtechnology.net,migrate-moments.tayloredtechnology.net
-  volumes:
-  - host_path: "/var/persistence/tayloredtechnology/moments/wp-content"
-    container_path: "/mnt/hhvm/public/wp-content/"
-- category: WebSites
-  name: inspiredword~curate
+    value: keidrych
+  volumes: []
+- category: keidrych
+  name: 5~keidrych
   source: tayloredtechnology/startup-booster:latest
   description: 
   type: Default
@@ -198,22 +188,16 @@ images:
   links:
   - service: db
     alias: db
-  - service: memcached
-    alias: memcached
   environment: 
   - variable: DB_PASS
     value: password
   - variable: DB_HOST
     value: db
   - variable: DB_NAME
-    value: inspiredwordcurate
-  - variable: VIRTUAL_HOST
-    value: curate.inspiredwordinternational.com,migrate-curate.inspiredwordinternational.com
-  volumes:
-  - host_path: "/var/persistence/inspiredwordinternational/curate/wp-content"
-    container_path: "/mnt/hhvm/public/wp-content/"
-- category: WebSites
-  name: inspiredword
+    value: keidrych
+  volumes: []
+- category: keidrych
+  name: 6~keidrych
   source: tayloredtechnology/startup-booster:latest
   description: 
   type: Default
@@ -222,22 +206,16 @@ images:
   links:
   - service: db
     alias: db
-  - service: memcached
-    alias: memcached
   environment: 
   - variable: DB_PASS
     value: password
   - variable: DB_HOST
     value: db
   - variable: DB_NAME
-    value: inspiredword
-  - variable: VIRTUAL_HOST
-    value: inspiredwordinternational.com,www.inspiredwordinternational.com,migrate.inspiredwordinternational.com
-  volumes:
-  - host_path: "/var/persistence/inspiredwordinternational/wp-content"
-    container_path: "/mnt/hhvm/public/wp-content/"
-- category: WebSites
-  name: dolphinremovals
+    value: keidrych
+  volumes: []
+- category: keidrych
+  name: 7~keidrych
   source: tayloredtechnology/startup-booster:latest
   description: 
   type: Default
@@ -246,17 +224,29 @@ images:
   links:
   - service: db
     alias: db
-  - service: memcached
-    alias: memcached
   environment: 
   - variable: DB_PASS
     value: password
   - variable: DB_HOST
     value: db
   - variable: DB_NAME
-    value: dolphinremoval
-  - variable: VIRTUAL_HOST
-    value: dolphinremovals.com.au,www.dolphinremovals.com.au,migrate.dolphinremovals.com.au
-  volumes:
-  - host_path: "/var/persistence/dolphinremovals/wp-content"
-    container_path: "/mnt/hhvm/public/wp-content/"
+    value: keidrych
+  volumes: []
+- category: keidrych
+  name: 8~keidrych
+  source: tayloredtechnology/startup-booster:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: db
+    alias: db
+  environment: 
+  - variable: DB_PASS
+    value: password
+  - variable: DB_HOST
+    value: db
+  - variable: DB_NAME
+    value: keidrych
+  volumes: []
