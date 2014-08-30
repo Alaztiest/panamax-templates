@@ -62,3 +62,19 @@ images:
   volumes:
   - host_path: "/var/run/docker.sock"
     container_path: "/tmp/docker.sock"
+- category: System Utilities
+  name: memcached
+  source: sylvainlasnier/memcached:latest
+  description: 
+  type: Default
+  expose: ['11211']
+  ports:
+  - host_port: '11211'
+    container_port: '11211'
+  links: []
+  environment:
+   - variable: MAX_CONN
+    value: 512    
+   - variable: MAX_MEM
+    value: 64
+  volumes: []
