@@ -188,3 +188,27 @@ images:
   volumes:
   - host_path: "/var/persistence/tayloredtechnology/moments/wp-content"
     container_path: "/mnt/hhvm/public/wp-content/"
+- category: WebSites
+  name: inspiredword~curate
+  source: tayloredtechnology/startup-booster:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: db
+    alias: db
+  - service: memcached
+    alias: memcached
+  environment: 
+  - variable: DB_PASS
+    value: password
+  - variable: DB_HOST
+    value: db
+  - variable: DB_NAME
+    value: inspiredwordcurate
+  - variable: VIRTUAL_HOST
+    value: curate.inspiredwordinternational.com,migrate-curate.inspiredwordinternational.com
+  volumes:
+  - host_path: "/var/persistence/inspiredwordinternational/curate/wp-content"
+    container_path: "/mnt/hhvm/public/wp-content/"
