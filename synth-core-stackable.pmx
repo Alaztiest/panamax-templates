@@ -62,6 +62,20 @@ images:
   volumes:
   - host_path: "/var/run/docker.sock"
     container_path: "/tmp/docker.sock"
+- category: Utilities
+  name: Reverse Proxy
+  source: jwilder/nginx-proxy:latest
+  description: 
+  type: Default
+  expose: ['80']
+  ports:
+  - host_port: '80'
+    container_port: '80'
+  links: []
+  environment: []
+  volumes:
+  - host_path: "/var/run/docker.sock"
+    container_path: "/tmp/docker.sock"
 - category: DB Tier
   name: db
   source: tutum/mysql:latest
