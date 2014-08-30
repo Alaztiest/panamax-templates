@@ -116,3 +116,27 @@ images:
   volumes:
   - host_path: "/var/persistence/keidrych/wp-content"
     container_path: "/mnt/hhvm/public/wp-content/"
+- category: WebSites
+  name: tayloredtechnology
+  source: tayloredtechnology/startup-booster:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: db
+    alias: db
+  - service: memcached
+    alias: memcached
+  environment: 
+  - variable: DB_PASS
+    value: password
+  - variable: DB_HOST
+    value: db
+  - variable: DB_NAME
+    value: tt
+  - variable: VIRTUAL_HOST
+    value: tayloredtechnology.net,www.tayloredtechnology.net,migrate.tayloredtechnology.net
+  volumes:
+  - host_path: "/var/persistence/tayloredtechnology/wp-content"
+    container_path: "/mnt/hhvm/public/wp-content/"
