@@ -62,21 +62,17 @@ images:
   volumes:
   - host_path: "/var/run/docker.sock"
     container_path: "/tmp/docker.sock"
-- category: Utilities
-  name: memcached
-  source: sylvainlasnier/memcached:latest
+- category: DB Tier
+  name: db
+  source: tutum/mysql:latest
   description: 
   type: Default
-  expose: ['11211']
-  ports:
-  - host_port: '11211'
-    container_port: '11211'
+  expose: []
+  ports: []
   links: []
   environment:
-   - variable: MAX_CONN
-    value: 512
-   - variable: MAX_MEM
-    value: 64
+  - variable: MYSQL_PASS
+    value: password
   volumes:
-  - host_path: "/var/run/docker.sock"
-    container_path: "/tmp/docker.sock"
+  - host_path: "/var/persistence/mysql"
+    container_path: "/var/lib/mysql"
