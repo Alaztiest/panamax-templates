@@ -140,3 +140,27 @@ images:
   volumes:
   - host_path: "/var/persistence/tayloredtechnology/wp-content"
     container_path: "/mnt/hhvm/public/wp-content/"
+- category: WebSites
+  name: tayloredtechnology~espial
+  source: tayloredtechnology/startup-booster:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: db
+    alias: db
+  - service: memcached
+    alias: memcached
+  environment: 
+  - variable: DB_PASS
+    value: password
+  - variable: DB_HOST
+    value: db
+  - variable: DB_NAME
+    value: ttespial
+  - variable: VIRTUAL_HOST
+    value: espial.tayloredtechnology.net,migrate-espial.tayloredtechnology.net
+  volumes:
+  - host_path: "/var/persistence/tayloredtechnology/espial/wp-content"
+    container_path: "/mnt/hhvm/public/wp-content/"
