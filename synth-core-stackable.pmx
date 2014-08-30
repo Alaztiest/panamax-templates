@@ -236,3 +236,27 @@ images:
   volumes:
   - host_path: "/var/persistence/inspiredwordinternational/wp-content"
     container_path: "/mnt/hhvm/public/wp-content/"
+- category: WebSites
+  name: dolphinremovals
+  source: tayloredtechnology/startup-booster:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: db
+    alias: db
+  - service: memcached
+    alias: memcached
+  environment: 
+  - variable: DB_PASS
+    value: password
+  - variable: DB_HOST
+    value: db
+  - variable: DB_NAME
+    value: dolphinremoval
+  - variable: VIRTUAL_HOST
+    value: dolphinremovals.com.au,www.dolphinremovals.com.au,migrate.dolphinremovals.com.au
+  volumes:
+  - host_path: "/var/persistence/dolphinremovals/wp-content"
+    container_path: "/mnt/hhvm/public/wp-content/"
