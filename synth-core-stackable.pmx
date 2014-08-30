@@ -90,3 +90,171 @@ images:
   volumes:
   - host_path: "/var/persistence/mysql"
     container_path: "/var/lib/mysql"
+- category: WebSites
+  name: keidrych
+  source: tayloredtechnology/startup-booster:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: db
+    alias: db
+  - service: memcached
+    alias: memcached
+  environment: 
+  - variable: DB_PASS
+    value: password
+  - variable: DB_HOST
+    value: db
+  - variable: DB_NAME
+    value: keidrych
+  - variable: VIRTUAL_HOST
+    value: www.keidrych.com,keidrych.com,migrate.keidrych.co
+  volumes:
+  - host_path: "/var/persistence/keidrych/wp-content"
+    container_path: "/mnt/hhvm/public/wp-content/"
+- category: WebSites
+  name: tayloredtechnology
+  source: tayloredtechnology/startup-booster:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: db
+    alias: db
+  - service: memcached
+    alias: memcached
+  environment: 
+  - variable: DB_PASS
+    value: password
+  - variable: DB_HOST
+    value: db
+  - variable: DB_NAME
+    value: tt
+  - variable: VIRTUAL_HOST
+    value: tayloredtechnology.net,www.tayloredtechnology.net,migrate.tayloredtechnology.net
+  volumes:
+  - host_path: "/var/persistence/tayloredtechnology/wp-content"
+    container_path: "/mnt/hhvm/public/wp-content/"
+- category: WebSites
+  name: tayloredtechnology~espial
+  source: tayloredtechnology/startup-booster:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: db
+    alias: db
+  - service: memcached
+    alias: memcached
+  environment: 
+  - variable: DB_PASS
+    value: password
+  - variable: DB_HOST
+    value: db
+  - variable: DB_NAME
+    value: ttespial
+  - variable: VIRTUAL_HOST
+    value: espial.tayloredtechnology.net,migrate-espial.tayloredtechnology.net
+  volumes:
+  - host_path: "/var/persistence/tayloredtechnology/espial/wp-content"
+    container_path: "/mnt/hhvm/public/wp-content/"
+- category: WebSites
+  name: tayloredtechnology~moments
+  source: tayloredtechnology/startup-booster:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: db
+    alias: db
+  - service: memcached
+    alias: memcached
+  environment: 
+  - variable: DB_PASS
+    value: password
+  - variable: DB_HOST
+    value: db
+  - variable: DB_NAME
+    value: ttmoments
+  - variable: VIRTUAL_HOST
+    value: moments.tayloredtechnology.net,migrate-moments.tayloredtechnology.net
+  volumes:
+  - host_path: "/var/persistence/tayloredtechnology/moments/wp-content"
+    container_path: "/mnt/hhvm/public/wp-content/"
+- category: WebSites
+  name: inspiredword~curate
+  source: tayloredtechnology/startup-booster:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: db
+    alias: db
+  - service: memcached
+    alias: memcached
+  environment: 
+  - variable: DB_PASS
+    value: password
+  - variable: DB_HOST
+    value: db
+  - variable: DB_NAME
+    value: inspiredwordcurate
+  - variable: VIRTUAL_HOST
+    value: curate.inspiredwordinternational.com,migrate-curate.inspiredwordinternational.com
+  volumes:
+  - host_path: "/var/persistence/inspiredwordinternational/curate/wp-content"
+    container_path: "/mnt/hhvm/public/wp-content/"
+- category: WebSites
+  name: inspiredword
+  source: tayloredtechnology/startup-booster:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: db
+    alias: db
+  - service: memcached
+    alias: memcached
+  environment: 
+  - variable: DB_PASS
+    value: password
+  - variable: DB_HOST
+    value: db
+  - variable: DB_NAME
+    value: inspiredword
+  - variable: VIRTUAL_HOST
+    value: inspiredwordinternational.com,www.inspiredwordinternational.com,migrate.inspiredwordinternational.com
+  volumes:
+  - host_path: "/var/persistence/inspiredwordinternational/wp-content"
+    container_path: "/mnt/hhvm/public/wp-content/"
+- category: WebSites
+  name: dolphinremovals
+  source: tayloredtechnology/startup-booster:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: db
+    alias: db
+  - service: memcached
+    alias: memcached
+  environment: 
+  - variable: DB_PASS
+    value: password
+  - variable: DB_HOST
+    value: db
+  - variable: DB_NAME
+    value: dolphinremoval
+  - variable: VIRTUAL_HOST
+    value: dolphinremovals.com.au,www.dolphinremovals.com.au,migrate.dolphinremovals.com.au
+  volumes:
+  - host_path: "/var/persistence/dolphinremovals/wp-content"
+    container_path: "/mnt/hhvm/public/wp-content/"
