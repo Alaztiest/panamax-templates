@@ -78,6 +78,32 @@ images:
   - variable: MAX_MEM
     value: 64
   volumes: []
+- category: Utilities
+  name: espial
+  source: tayloredtechnology/wordpress-nginx-hhvm:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: db
+    alias: db
+  - service: memcached
+    alias: memcached
+  environment: 
+  - variable: DB_PASS
+    value: password
+  - variable: DB_HOST
+    value: db
+  - variable: DB_NAME
+    value: ttespial
+  - variable: GIT_WORDPRESS
+    value: https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/NURVING/espial.git
+  - variable: VIRTUAL_HOST
+    value: espial.tayloredtechnology.net,migrate-espial.tayloredtechnology.net
+  volumes:
+  - host_path: "/var/persistence/tayloredtechnology-espial"
+    container_path: "/mnt/hhvm/public/"
 - category: DB Tier
   name: db
   source: tutum/mysql:latest
@@ -143,32 +169,6 @@ images:
     value: tayloredtechnology.net,www.tayloredtechnology.net,migrate.tayloredtechnology.net
   volumes:
   - host_path: "/var/persistence/tayloredtechnology"
-    container_path: "/mnt/hhvm/public/"
-- category: WebSites
-  name: tayloredtechnology~espial
-  source: tayloredtechnology/wordpress-nginx-hhvm:latest
-  description: 
-  type: Default
-  expose: []
-  ports: []
-  links:
-  - service: db
-    alias: db
-  - service: memcached
-    alias: memcached
-  environment: 
-  - variable: DB_PASS
-    value: password
-  - variable: DB_HOST
-    value: db
-  - variable: DB_NAME
-    value: ttespial
-  - variable: GIT_WORDPRESS
-    value: https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/NURVING/startup-booster.git
-  - variable: VIRTUAL_HOST
-    value: espial.tayloredtechnology.net,migrate-espial.tayloredtechnology.net
-  volumes:
-  - host_path: "/var/persistence/tayloredtechnology-espial"
     container_path: "/mnt/hhvm/public/"
 - category: WebSites
   name: tayloredtechnology~moments
