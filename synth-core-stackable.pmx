@@ -28,7 +28,7 @@ documentation: |-
   # Images used
 
   tutum/mysql:latest				The most popular and easy to use mysql image on docker hub.
-  tayloredtechnology/startup-booster:latest		A WordPress images that can connect to other database like MySQL, MariaDB.
+  tayloredtechnology/wordpress-nginx-hhvm:latest		A WordPress images that can connect to other database like MySQL, MariaDB.
   tutum/haproxy:latest				A well maintained load balancer, easy to use by simply linking to it.
   
   # Setup and access
@@ -94,7 +94,7 @@ images:
     container_path: "/var/lib/mysql"
 - category: WebSites
   name: keidrych
-  source: tayloredtechnology/startup-booster:latest
+  source: tayloredtechnology/wordpress-nginx-hhvm:latest
   description: 
   type: Default
   expose: []
@@ -111,14 +111,16 @@ images:
     value: db
   - variable: DB_NAME
     value: keidrych
+  - variable: GIT_WORDPRESS
+    value: https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/NURVING/startup-booster.git
   - variable: VIRTUAL_HOST
     value: www.keidrych.com,keidrych.com,migrate.keidrych.com
   volumes:
-  - host_path: "/var/persistence/keidrych/wp-content"
-    container_path: "/mnt/hhvm/public/wp-content/"
+  - host_path: "/var/persistence/keidrych"
+    container_path: "/mnt/hhvm/public/"
 - category: WebSites
   name: tayloredtechnology
-  source: tayloredtechnology/startup-booster:latest
+  source: tayloredtechnology/wordpress-nginx-hhvm:latest
   description: 
   type: Default
   expose: []
@@ -135,14 +137,16 @@ images:
     value: db
   - variable: DB_NAME
     value: tt
+  - variable: GIT_WORDPRESS
+    value: https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/NURVING/startup-booster.git
   - variable: VIRTUAL_HOST
     value: tayloredtechnology.net,www.tayloredtechnology.net,migrate.tayloredtechnology.net
   volumes:
-  - host_path: "/var/persistence/tayloredtechnology/wp-content"
-    container_path: "/mnt/hhvm/public/wp-content/"
+  - host_path: "/var/persistence/tayloredtechnology"
+    container_path: "/mnt/hhvm/public/"
 - category: WebSites
   name: tayloredtechnology~espial
-  source: tayloredtechnology/startup-booster:latest
+  source: tayloredtechnology/wordpress-nginx-hhvm:latest
   description: 
   type: Default
   expose: []
@@ -159,14 +163,16 @@ images:
     value: db
   - variable: DB_NAME
     value: ttespial
+  - variable: GIT_WORDPRESS
+    value: https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/NURVING/startup-booster.git
   - variable: VIRTUAL_HOST
     value: espial.tayloredtechnology.net,migrate-espial.tayloredtechnology.net
   volumes:
-  - host_path: "/var/persistence/tayloredtechnology/espial/wp-content"
-    container_path: "/mnt/hhvm/public/wp-content/"
+  - host_path: "/var/persistence/tayloredtechnology/espial"
+    container_path: "/mnt/hhvm/public/"
 - category: WebSites
   name: tayloredtechnology~moments
-  source: tayloredtechnology/startup-booster:latest
+  source: tayloredtechnology/wordpress-nginx-hhvm:latest
   description: 
   type: Default
   expose: []
@@ -183,14 +189,16 @@ images:
     value: db
   - variable: DB_NAME
     value: ttmoments
+  - variable: GIT_WORDPRESS
+    value: https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/NURVING/startup-booster.git
   - variable: VIRTUAL_HOST
     value: moments.tayloredtechnology.net,migrate-moments.tayloredtechnology.net
   volumes:
-  - host_path: "/var/persistence/tayloredtechnology/moments/wp-content"
-    container_path: "/mnt/hhvm/public/wp-content/"
+  - host_path: "/var/persistence/tayloredtechnology/moments"
+    container_path: "/mnt/hhvm/public/"
 - category: WebSites
   name: inspiredword~curate
-  source: tayloredtechnology/startup-booster:latest
+  source: tayloredtechnology/wordpress-nginx-hhvm:latest
   description: 
   type: Default
   expose: []
@@ -207,14 +215,16 @@ images:
     value: db
   - variable: DB_NAME
     value: inspiredwordcurate
+  - variable: GIT_WORDPRESS
+    value: https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/NURVING/startup-booster.git
   - variable: VIRTUAL_HOST
     value: curate.inspiredwordinternational.com,migrate-curate.inspiredwordinternational.com
   volumes:
-  - host_path: "/var/persistence/inspiredwordinternational/curate/wp-content"
-    container_path: "/mnt/hhvm/public/wp-content/"
+  - host_path: "/var/persistence/inspiredwordinternational/curate"
+    container_path: "/mnt/hhvm/public/"
 - category: WebSites
   name: inspiredword
-  source: tayloredtechnology/startup-booster:latest
+  source: tayloredtechnology/wordpress-nginx-hhvm:latest
   description: 
   type: Default
   expose: []
@@ -231,14 +241,16 @@ images:
     value: db
   - variable: DB_NAME
     value: inspiredword
+  - variable: GIT_WORDPRESS
+    value: https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/NURVING/startup-booster.git
   - variable: VIRTUAL_HOST
     value: inspiredwordinternational.com,www.inspiredwordinternational.com,migrate.inspiredwordinternational.com
   volumes:
-  - host_path: "/var/persistence/inspiredwordinternational/wp-content"
-    container_path: "/mnt/hhvm/public/wp-content/"
+  - host_path: "/var/persistence/inspiredwordinternational"
+    container_path: "/mnt/hhvm/public/"
 - category: WebSites
   name: dolphinremovals
-  source: tayloredtechnology/startup-booster:latest
+  source: tayloredtechnology/wordpress-nginx-hhvm:latest
   description: 
   type: Default
   expose: []
@@ -255,8 +267,10 @@ images:
     value: db
   - variable: DB_NAME
     value: dolphinremoval
+  - variable: GIT_WORDPRESS
+    value: https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/NURVING/startup-booster.git
   - variable: VIRTUAL_HOST
     value: dolphinremovals.com.au,www.dolphinremovals.com.au,migrate.dolphinremovals.com.au
   volumes:
-  - host_path: "/var/persistence/dolphinremovals/wp-content"
-    container_path: "/mnt/hhvm/public/wp-content/"
+  - host_path: "/var/persistence/dolphinremovals"
+    container_path: "/mnt/hhvm/public/"
