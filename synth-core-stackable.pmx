@@ -296,7 +296,7 @@ images:
   - variable: GIT_WORDPRESS
     value: https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/NURVING/startup-booster.git
   - variable: VIRTUAL_HOST
-    value: luvurday.com.au,www.luvurday.com.au,luvurday.com,www.luvurday.com.au,migrate.dolphinremovals.com.au
+    value: luvurday.com.au,www.luvurday.com.au,luvurday.com,www.luvurday.com.au,migrate.luvurday.com.au
   volumes:
   - host_path: "/var/persistence/luvurday"
     container_path: "/mnt/hhvm/public/"
