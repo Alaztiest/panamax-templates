@@ -168,7 +168,7 @@ images:
   - variable: VIRTUAL_HOST
     value: espial.tayloredtechnology.net,migrate-espial.tayloredtechnology.net
   volumes:
-  - host_path: "/var/persistence/tayloredtechnology/espial"
+  - host_path: "/var/persistence/tayloredtechnology-espial"
     container_path: "/mnt/hhvm/public/"
 - category: WebSites
   name: tayloredtechnology~moments
@@ -194,7 +194,7 @@ images:
   - variable: VIRTUAL_HOST
     value: moments.tayloredtechnology.net,migrate-moments.tayloredtechnology.net
   volumes:
-  - host_path: "/var/persistence/tayloredtechnology/moments"
+  - host_path: "/var/persistence/tayloredtechnology-moments"
     container_path: "/mnt/hhvm/public/"
 - category: WebSites
   name: inspiredword~curate
@@ -220,7 +220,7 @@ images:
   - variable: VIRTUAL_HOST
     value: curate.inspiredwordinternational.com,migrate-curate.inspiredwordinternational.com
   volumes:
-  - host_path: "/var/persistence/inspiredwordinternational/curate"
+  - host_path: "/var/persistence/inspiredwordinternational-curate"
     container_path: "/mnt/hhvm/public/"
 - category: WebSites
   name: inspiredword
