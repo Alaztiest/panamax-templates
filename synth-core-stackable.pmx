@@ -50,7 +50,7 @@ authors:
 images:
 - category: Utilities
   name: Reverse Proxy
-  source: jwilder/nginx-proxy:latest
+  source: tayloredtechnology/nginx-proxy:latest
   description: 
   type: Default
   expose: ['80']
