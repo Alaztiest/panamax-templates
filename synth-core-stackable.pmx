@@ -216,7 +216,7 @@ images:
   - variable: DB_NAME
     value: inspiredwordcurate
   - variable: GIT_WORDPRESS
-    value: https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/NURVING/startup-booster.git
+    value: https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/tayloredtechnology/inspiredword-curate.git
   - variable: VIRTUAL_HOST
     value: curate.inspiredwordinternational.com,migrate-curate.inspiredwordinternational.com
   volumes:
@@ -242,7 +242,7 @@ images:
   - variable: DB_NAME
     value: inspiredword
   - variable: GIT_WORDPRESS
-    value: https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/NURVING/startup-booster.git
+    value: https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/tayloredtechnology/inspiredword.git
   - variable: VIRTUAL_HOST
     value: inspiredwordinternational.com,www.inspiredwordinternational.com,migrate.inspiredwordinternational.com
   volumes:
