@@ -100,7 +100,7 @@ images:
   - variable: GIT_WORDPRESS
     value: https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/NURVING/espial.git
   - variable: VIRTUAL_HOST
-    value: espial.tayloredtechnology.net,migrate-espial.tayloredtechnology.net
+    value: espial.tayloredtechnology.net
   volumes:
   - host_path: "/var/persistence/tayloredtechnology-espial"
     container_path: "/mnt/hhvm/public/"
@@ -140,7 +140,7 @@ images:
   - variable: GIT_WORDPRESS
     value: https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/NURVING/startup-booster.git
   - variable: VIRTUAL_HOST
-    value: www.keidrych.com,keidrych.com,migrate.keidrych.com
+    value: www.keidrych.com,keidrych.com
   volumes:
   - host_path: "/var/persistence/keidrych"
     container_path: "/mnt/hhvm/public/"
@@ -166,7 +166,7 @@ images:
   - variable: GIT_WORDPRESS
     value: https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/NURVING/startup-booster.git
   - variable: VIRTUAL_HOST
-    value: tayloredtechnology.net,www.tayloredtechnology.net,migrate.tayloredtechnology.net
+    value: tayloredtechnology.net,www.tayloredtechnology.net
   volumes:
   - host_path: "/var/persistence/tayloredtechnology"
     container_path: "/mnt/hhvm/public/"
@@ -192,7 +192,7 @@ images:
   - variable: GIT_WORDPRESS
     value: https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/NURVING/startup-booster.git
   - variable: VIRTUAL_HOST
-    value: moments.tayloredtechnology.net,migrate-moments.tayloredtechnology.net
+    value: moments.tayloredtechnology.net
   volumes:
   - host_path: "/var/persistence/tayloredtechnology-moments"
     container_path: "/mnt/hhvm/public/"
@@ -218,7 +218,7 @@ images:
   - variable: GIT_WORDPRESS
     value: https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/tayloredtechnology/inspiredword-curate.git
   - variable: VIRTUAL_HOST
-    value: curate.inspiredwordinternational.com,migrate-curate.inspiredwordinternational.com
+    value: curate.inspiredwordinternational.com
   volumes:
   - host_path: "/var/persistence/inspiredwordinternational-curate"
     container_path: "/mnt/hhvm/public/"
@@ -244,7 +244,7 @@ images:
   - variable: GIT_WORDPRESS
     value: https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/tayloredtechnology/inspiredword.git
   - variable: VIRTUAL_HOST
-    value: inspiredwordinternational.com,www.inspiredwordinternational.com,migrate.inspiredwordinternational.com
+    value: inspiredwordinternational.com,www.inspiredwordinternational.com
   volumes:
   - host_path: "/var/persistence/inspiredwordinternational"
     container_path: "/mnt/hhvm/public/"
@@ -270,7 +270,7 @@ images:
   - variable: GIT_WORDPRESS
     value: https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/NURVING/startup-booster.git
   - variable: VIRTUAL_HOST
-    value: dolphinremovals.com.au,www.dolphinremovals.com.au,migrate.dolphinremovals.com.au
+    value: dolphinremovals.com.au,www.dolphinremovals.com.au
   volumes:
   - host_path: "/var/persistence/dolphinremovals"
     container_path: "/mnt/hhvm/public/"
@@ -296,7 +296,7 @@ images:
   - variable: GIT_WORDPRESS
     value: https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/tayloredtechnology/luvurday.git
   - variable: VIRTUAL_HOST
-    value: luvurday.com.au,www.luvurday.com.au,luvurday.com,www.luvurday.com.au,migrate.luvurday.com.au
+    value: luvurday.com.au,www.luvurday.com.au,luvurday.com,www.luvurday.com.au
   volumes:
   - host_path: "/var/persistence/luvurday"
     container_path: "/mnt/hhvm/public/"
