@@ -300,3 +300,29 @@ images:
   volumes:
   - host_path: "/var/persistence/luvurday"
     container_path: "/mnt/hhvm/public/"
+- category: WebSites
+  name: claudiacarmenanton
+  source: tayloredtechnology/wordpress-nginx-hhvm:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: db
+    alias: db
+  - service: memcached
+    alias: memcached
+  environment: 
+  - variable: DB_PASS
+    value: password
+  - variable: DB_HOST
+    value: db
+  - variable: DB_NAME
+    value: claudiacarmenanton
+  - variable: GIT_WORDPRESS
+    value: https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/tayloredtechnology/claudiacarmenanton.git
+  - variable: VIRTUAL_HOST
+    value: www.claudiacarmenanton.com,claudiacarmenanton.com
+  volumes:
+  - host_path: "/var/persistence/claudiacarmenanton"
+    container_path: "/mnt/hhvm/public/"
