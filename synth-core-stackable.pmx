@@ -57,11 +57,15 @@ images:
   ports:
   - host_port: '80'
     container_port: '80'
+  - host_port: '443'
+    container_port: '443'
   links: []
   environment: []
   volumes:
   - host_path: "/var/run/docker.sock"
     container_path: "/tmp/docker.sock"
+  - host_path: "/var/persistence/ssl"
+    container_path: "/etc/nginx/certificates"
 - category: Utilities
   name: memcached
   source: sylvainlasnier/memcached:latest
