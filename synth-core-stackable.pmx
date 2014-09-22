@@ -53,7 +53,7 @@ images:
   source: tayloredtechnology/nginx-proxy:latest
   description: 
   type: Default
-  expose: ['80']
+  expose: ['80','443']
   ports:
   - host_port: '80'
     container_port: '80'
