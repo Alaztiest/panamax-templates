@@ -141,8 +141,6 @@ images:
     value: db
   - variable: DB_NAME
     value: keidrych
-  - variable: GIT_WORDPRESS
-    value: https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/NURVING/startup-booster.git
   - variable: VIRTUAL_HOST
     value: www.keidrych.com,keidrych.com
   volumes:
@@ -167,8 +165,6 @@ images:
     value: db
   - variable: DB_NAME
     value: tt
-  - variable: GIT_WORDPRESS
-    value: https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/NURVING/startup-booster.git
   - variable: VIRTUAL_HOST
     value: tayloredtechnology.net,www.tayloredtechnology.net
   volumes:
@@ -193,8 +189,6 @@ images:
     value: db
   - variable: DB_NAME
     value: ttmoments
-  - variable: GIT_WORDPRESS
-    value: https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/NURVING/startup-booster.git
   - variable: VIRTUAL_HOST
     value: moments.tayloredtechnology.net
   volumes:
@@ -219,8 +213,6 @@ images:
     value: db
   - variable: DB_NAME
     value: inspiredwordcurate
-  - variable: GIT_WORDPRESS
-    value: https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/tayloredtechnology/inspiredword-curate.git
   - variable: VIRTUAL_HOST
     value: curate.inspiredwordinternational.com
   volumes:
@@ -245,8 +237,6 @@ images:
     value: db
   - variable: DB_NAME
     value: inspiredword
-  - variable: GIT_WORDPRESS
-    value: https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/tayloredtechnology/inspiredword.git
   - variable: VIRTUAL_HOST
     value: inspiredwordinternational.com,www.inspiredwordinternational.com
   volumes:
@@ -271,8 +261,6 @@ images:
     value: db
   - variable: DB_NAME
     value: dolphinremoval
-  - variable: GIT_WORDPRESS
-    value: https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/NURVING/startup-booster.git
   - variable: VIRTUAL_HOST
     value: dolphinremovals.com.au,www.dolphinremovals.com.au
   volumes:
@@ -297,8 +285,6 @@ images:
     value: db
   - variable: DB_NAME
     value: luvurday
-  - variable: GIT_WORDPRESS
-    value: https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/tayloredtechnology/luvurday.git
   - variable: VIRTUAL_HOST
     value: luvurday.com.au,www.luvurday.com.au,luvurday.com,www.luvurday.com.au
   volumes:
@@ -323,8 +309,6 @@ images:
     value: db
   - variable: DB_NAME
     value: claudiacarmenanton
-  - variable: GIT_WORDPRESS
-    value: https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/tayloredtechnology/claudiacarmenanton.git
   - variable: VIRTUAL_HOST
     value: www.claudiacarmenanton.com,claudiacarmenanton.com
   volumes:
