@@ -1,4 +1,4 @@
-name: Synth Core
+name: Synth DSS
 description: A Wordpress that can scale horizontally and is load balanced using HAProxy
 keywords: wordpress, mysql, haproxy, horizontal scaling
 recommended: false
