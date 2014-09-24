@@ -1,0 +1,27 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+    echo "No arguments provided"
+    echo "Argument 1: directory to clone into"
+    echo "Argument 2: tayloredtechnology/$2.git custom git repository"
+    exit 1
+fi
+
+if [ $# -eq 1 ]; then
+    echo "Argument 2: tayloredtechnology/$2.git custom git repository has not been specified"
+    echo "No Custom Repistory Specified"
+    echo ""
+fi
+
+if [ ! -d "gitcaches/cyberspaced.reference" ]; then
+  git clone --mirror https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/NURVING/cyberspaced.git gitcaches/cyberspaced.reference
+fi
+
+if [ ! -e "$1/resync-plugins-themes.sh" ]; then
+	rm -rf $1
+	git clone --reference gitcaches/cyberspaced.reference https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/NURVING/cyberspaced.git $1
+	cd $1
+	git remote add sync-custom https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/tayloredtechnology/$2.git
+else
+	echo "Directory already cloned, run update or purge and try again"
+fi
