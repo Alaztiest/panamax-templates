@@ -116,7 +116,7 @@ images:
   - variable: DB_NAME
     value: dss
   - variable: VIRTUAL_HOST
-    value: disabilityservicesselector.com,disabilityservicesselector.com.au,disabilityservicesselector.org,disabilityservicesselector.org.au
+    value: disabilityservicesselector.com,,www.disabilityservicesselector.com,disabilityservicesselector.com.au,www.disabilityservicesselector.com.au,disabilityservicesselector.org,www.disabilityservicesselector.org,disabilityservicesselector.org.au,www.disabilityservicesselector.org.au
   volumes:
   - host_path: "/var/persistence/disabilityservicesselector"
     container_path: "/mnt/hhvm/public/"
