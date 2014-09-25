@@ -108,6 +108,8 @@ images:
   volumes:
   - host_path: "/var/persistence/tayloredtechnology-espial"
     container_path: "/mnt/hhvm/public/"
+  - host_path: "/var/persistence/uploads/tayloredtechnology-espial"
+    container_path: "/mnt/hhvm/public/wp-content/uploads/"
 - category: DB Tier
   name: db
   source: tutum/mysql:latest
@@ -147,30 +149,6 @@ images:
   - host_path: "/var/persistence/keidrych"
     container_path: "/mnt/hhvm/public/"
 - category: WebSites
-  name: tayloredtechnology
-  source: tayloredtechnology/wordpress-nginx-hhvm:latest
-  description: 
-  type: Default
-  expose: []
-  ports: []
-  links:
-  - service: db
-    alias: db
-  - service: memcached
-    alias: memcached
-  environment: 
-  - variable: DB_PASS
-    value: password
-  - variable: DB_HOST
-    value: db
-  - variable: DB_NAME
-    value: tt
-  - variable: VIRTUAL_HOST
-    value: tayloredtechnology.net,www.tayloredtechnology.net
-  volumes:
-  - host_path: "/var/persistence/tayloredtechnology"
-    container_path: "/mnt/hhvm/public/"
-- category: WebSites
   name: tayloredtechnology~moments
   source: tayloredtechnology/wordpress-nginx-hhvm:latest
   description: 
@@ -194,6 +172,8 @@ images:
   volumes:
   - host_path: "/var/persistence/tayloredtechnology-moments"
     container_path: "/mnt/hhvm/public/"
+  - host_path: "/var/persistence/uploads/tayloredtechnology-moments"
+    container_path: "/mnt/hhvm/public/wp-content/uploads/"
 - category: WebSites
   name: inspiredword~curate
   source: tayloredtechnology/wordpress-nginx-hhvm:latest
@@ -218,6 +198,8 @@ images:
   volumes:
   - host_path: "/var/persistence/inspiredwordinternational-curate"
     container_path: "/mnt/hhvm/public/"
+  - host_path: "/var/persistence/uploads/inspiredwordinternational-curate"
+    container_path: "/mnt/hhvm/public/wp-content/uploads/"
 - category: WebSites
   name: inspiredword
   source: tayloredtechnology/wordpress-nginx-hhvm:latest
@@ -242,6 +224,8 @@ images:
   volumes:
   - host_path: "/var/persistence/inspiredwordinternational"
     container_path: "/mnt/hhvm/public/"
+  - host_path: "/var/persistence/uploads/inspiredwordinternational"
+    container_path: "/mnt/hhvm/public/wp-content/uploads/"
 - category: WebSites
   name: dolphinremovals
   source: tayloredtechnology/wordpress-nginx-hhvm:latest
@@ -266,6 +250,8 @@ images:
   volumes:
   - host_path: "/var/persistence/dolphinremovals"
     container_path: "/mnt/hhvm/public/"
+  - host_path: "/var/persistence/uploads/dolphinremovals"
+    container_path: "/mnt/hhvm/public/wp-content/uploads/"
 - category: WebSites
   name: luvurday
   source: tayloredtechnology/wordpress-nginx-hhvm:latest
@@ -290,6 +276,8 @@ images:
   volumes:
   - host_path: "/var/persistence/luvurday"
     container_path: "/mnt/hhvm/public/"
+  - host_path: "/var/persistence/uploads/luvurday"
+    container_path: "/mnt/hhvm/public/wp-content/uploads/"
 - category: WebSites
   name: claudiacarmenanton
   source: tayloredtechnology/wordpress-nginx-hhvm:latest
@@ -314,3 +302,5 @@ images:
   volumes:
   - host_path: "/var/persistence/claudiacarmenanton"
     container_path: "/mnt/hhvm/public/"
+  - host_path: "/var/persistence/uploads/claudiacarmenanton"
+    container_path: "/mnt/hhvm/public/wp-content/uploads/"
