@@ -175,6 +175,32 @@ images:
   - host_path: "/var/persistence/uploads/tayloredtechnology-moments"
     container_path: "/mnt/hhvm/public/wp-content/uploads/"
 - category: WebSites
+  name: tayloredtechnology~experi
+  source: tayloredtechnology/wordpress-nginx-hhvm:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: db
+    alias: db
+  - service: memcached
+    alias: memcached
+  environment: 
+  - variable: DB_PASS
+    value: password
+  - variable: DB_HOST
+    value: db
+  - variable: DB_NAME
+    value: ttexperi
+  - variable: VIRTUAL_HOST
+    value: experi.tayloredtechnology.net
+  volumes:
+  - host_path: "/var/persistence/tayloredtechnology-experi"
+    container_path: "/mnt/hhvm/public/"
+  - host_path: "/var/persistence/uploads/tayloredtechnology-experi"
+    container_path: "/mnt/hhvm/public/wp-content/uploads/"
+- category: WebSites
   name: inspiredword~curate
   source: tayloredtechnology/wordpress-nginx-hhvm:latest
   description: 
