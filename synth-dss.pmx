@@ -142,7 +142,7 @@ images:
   - variable: DB_NAME
     value: altimatewellness
   - variable: VIRTUAL_HOST
-    value: altimatewellness.com,www.altimatewellness.com,altimatewellness.com.au,www.altimatewellness.com.au
+    value: migrate.altimatewellness.com,altimatewellness.com,www.altimatewellness.com,altimatewellness.com.au,www.altimatewellness.com.au
   volumes:
   - host_path: "/var/persistence/altimatewellness"
     container_path: "/mnt/hhvm/public/"
@@ -168,7 +168,7 @@ images:
   - variable: DB_NAME
     value: tt
   - variable: VIRTUAL_HOST
-    value: tayloredtechnology.net,www.tayloredtechnology.net,tailoredtechnology.net,www.tailoredtechnology.net
+    value: migrate.tayloredtechnology.net,tayloredtechnology.net,www.tayloredtechnology.net,tailoredtechnology.net,www.tailoredtechnology.net
   volumes:
   - host_path: "/var/persistence/tayloredtechnology"
     container_path: "/mnt/hhvm/public/"
