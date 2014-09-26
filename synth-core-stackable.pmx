@@ -316,7 +316,7 @@ images:
     container_path: "/mnt/hhvm/public/wp-content/uploads/"
 - category: WebSites
   name: luvurday
-  source: tayloredtechnology/wordpress-nginx-hhvm:latest
+  source: tayloredtechnology/wordpress-nginx-hhvm:insecure
   description: 
   type: Default
   expose: []
