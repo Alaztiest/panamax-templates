@@ -143,8 +143,12 @@ images:
     value: db
   - variable: DB_NAME
     value: keidrych
+  - variable: SSL_ENABLED
+    value: true
   - variable: VIRTUAL_HOST
     value: www.keidrych.com,keidrych.com
+  - variable: AUTORESPONDER
+    value: "concourse"
   - variable: SMTP_PASSWORD
     value: "9ra-cqadj7t4"
   volumes:
@@ -171,8 +175,12 @@ images:
     value: db
   - variable: DB_NAME
     value: ttmoments
+  - variable: SSL_ENABLED
+    value: true
   - variable: VIRTUAL_HOST
     value: moments.tayloredtechnology.net
+  - variable: AUTORESPONDER
+    value: "concourse"
   - variable: SMTP_PASSWORD
     value: "6nyf8gne2ys3"
   volumes:
@@ -199,8 +207,12 @@ images:
     value: db
   - variable: DB_NAME
     value: ttexperi
+  - variable: SSL_ENABLED
+    value: true
   - variable: VIRTUAL_HOST
     value: experi.tayloredtechnology.net
+  - variable: AUTORESPONDER
+    value: "concourse"
   - variable: SMTP_PASSWORD
     value: "6nyf8gne2ys3"
   volumes:
@@ -227,8 +239,12 @@ images:
     value: db
   - variable: DB_NAME
     value: inspiredwordcurate
+  - variable: SSL_ENABLED
+    value: true
   - variable: VIRTUAL_HOST
     value: curate.inspiredwordinternational.com
+  - variable: AUTORESPONDER
+    value: "concourse"
   - variable: SMTP_PASSWORD
     value: "7urlcaaq6ve5"
   volumes:
@@ -255,8 +271,12 @@ images:
     value: db
   - variable: DB_NAME
     value: inspiredword
+  - variable: SSL_ENABLED
+    value: true
   - variable: VIRTUAL_HOST
     value: inspiredwordinternational.com,www.inspiredwordinternational.com
+  - variable: AUTORESPONDER
+    value: "concourse"
   - variable: SMTP_PASSWORD
     value: "7urlcaaq6ve5"
   volumes:
@@ -285,6 +305,8 @@ images:
     value: dolphinremoval
   - variable: VIRTUAL_HOST
     value: dolphinremovals.com.au,www.dolphinremovals.com.au
+  - variable: AUTORESPONDER
+    value: "concourse"
   - variable: SMTP_PASSWORD
     value: "34n5tcj6-t-9"
   volumes:
@@ -313,6 +335,8 @@ images:
     value: luvurday
   - variable: VIRTUAL_HOST
     value: luvurday.com,www.luvurday.com,luvurday.com.au,www.luvurday.com.au
+  - variable: AUTORESPONDER
+    value: "concourse"
   - variable: SMTP_PASSWORD
     value: "283eko5wyhb2"
   volumes:
@@ -339,8 +363,12 @@ images:
     value: db
   - variable: DB_NAME
     value: claudiacarmenanton
+  - variable: SSL_ENABLED
+    value: true
   - variable: VIRTUAL_HOST
     value: www.claudiacarmenanton.com,claudiacarmenanton.com
+  - variable: AUTORESPONDER
+    value: "concourse"
   - variable: SMTP_PASSWORD
     value: "2awnlbd645t3"
   volumes:
