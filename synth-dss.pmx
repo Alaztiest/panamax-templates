@@ -117,6 +117,8 @@ images:
     value: dss
   - variable: VIRTUAL_HOST
     value: www.disabilityservicesselector.com,disabilityservicesselector.com,disabilityservicesselector.com.au,www.disabilityservicesselector.com.au,disabilityservicesselector.org,www.disabilityservicesselector.org,disabilityservicesselector.org.au,www.disabilityservicesselector.org.au
+  - variable: SMTP_PASSWORD
+    value: "0a1a99c2d45d7d1c07fa15bcc5e15047"
   volumes:
   - host_path: "/var/persistence/disabilityservicesselector"
     container_path: "/mnt/hhvm/public/"
@@ -143,6 +145,8 @@ images:
     value: altimatewellness
   - variable: VIRTUAL_HOST
     value: migrate.altimatewellness.com,altimatewellness.com,www.altimatewellness.com,altimatewellness.com.au,www.altimatewellness.com.au
+  - variable: SMTP_PASSWORD
+    value: "66lqvif0j983"
   volumes:
   - host_path: "/var/persistence/altimatewellness"
     container_path: "/mnt/hhvm/public/"
@@ -169,6 +173,8 @@ images:
     value: tt
   - variable: VIRTUAL_HOST
     value: migrate.tayloredtechnology.net,tayloredtechnology.net,www.tayloredtechnology.net,tailoredtechnology.net,www.tailoredtechnology.net
+  - variable: SMTP_PASSWORD
+    value: "6nyf8gne2ys3"
   volumes:
   - host_path: "/var/persistence/tayloredtechnology"
     container_path: "/mnt/hhvm/public/"
