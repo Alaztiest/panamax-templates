@@ -298,7 +298,7 @@ images:
   - variable: DB_NAME
     value: luvurday
   - variable: VIRTUAL_HOST
-    value: luvurday.com.au,www.luvurday.com.au,luvurday.com,www.luvurday.com.au
+    value: luvurday.com,www.luvurday.com,luvurday.com.au,www.luvurday.com.au
   volumes:
   - host_path: "/var/persistence/luvurday"
     container_path: "/mnt/hhvm/public/"

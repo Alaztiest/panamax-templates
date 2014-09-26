@@ -27,7 +27,7 @@ fi
 
 if [ ! -e "$inst_location/resync-plugins-themes.sh" ]; then
     rm -rf $inst_location
-    git clone --reference gitcaches/startupbooster.reference https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/NURVING/startup-booster.git $inst_location
+    git clone --reference gitcaches/cyberspaced.reference https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/NURVING/startup-booster.git $inst_location
     if [ $# -eq 2 ]; then
         cd $inst_location
         git remote add sync-custom https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/tayloredtechnology/$2.git
