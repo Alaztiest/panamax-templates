@@ -143,8 +143,6 @@ images:
     value: db
   - variable: DB_NAME
     value: keidrych
-  - variable: SSL_ENABLED
-    value: true
   - variable: VIRTUAL_HOST
     value: www.keidrych.com,keidrych.com
   - variable: SMTP_PASSWORD
@@ -349,8 +347,6 @@ images:
     value: db
   - variable: DB_NAME
     value: claudiacarmenanton
-  - variable: SSL_ENABLED
-    value: true
   - variable: VIRTUAL_HOST
     value: www.claudiacarmenanton.com,claudiacarmenanton.com
   - variable: SMTP_PASSWORD
