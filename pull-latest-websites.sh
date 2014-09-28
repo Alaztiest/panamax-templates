@@ -1,7 +1,11 @@
 #!/bin/bash
 
 # Ensure Cache is up to date
-cd gitcaches/startupbooster.reference
+if [ -d "gitcaches/startupbooster.reference" ]; then
+	cd gitcaches/startupbooster.reference
+else
+	cd gitcaches/cyberspaced.reference
+fi
 git fetch 
 cd ../..
 

@@ -27,11 +27,18 @@ fi
 
 if [ ! -e "$inst_location/resync-plugins-themes.sh" ]; then
     rm -rf $inst_location
-    git clone --reference gitcaches/cyberspaced.reference https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/NURVING/startup-booster.git $inst_location
+    git clone --reference gitcaches/cyberspaced.reference https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/NURVING/cyberspaced.git $inst_location
+    cd $inst_location
+    git branch synched
+    git checkout synched
+    touch synched.wordpress
     if [ $# -eq 2 ]; then
-        cd $inst_location
         git remote add sync-custom https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/tayloredtechnology/$2.git
+        git fetch --depth 1 sync-custom master:synchedcustom
+        git merge -q -X theirs -m "synchedcustom" synchedcustom
+        ./sync-custom.sh
     fi
+    cd ..
 else
     echo "Directory already cloned, run update or purge and try again"
 fi
