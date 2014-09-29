@@ -176,7 +176,7 @@ images:
   - variable: SSL_ENABLED
     value: true
   - variable: VIRTUAL_HOST
-    value: migrate.tayloredtechnology.net,tayloredtechnology.net,www.tayloredtechnology.net,tailoredtechnology.net,www.tailoredtechnology.net
+    value: tayloredtechnology.net,www.tayloredtechnology.net,tailoredtechnology.net,www.tailoredtechnology.net
   - variable: SMTP_PASSWORD
     value: "6nyf8gne2ys3"
   volumes:
