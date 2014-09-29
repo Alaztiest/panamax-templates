@@ -115,8 +115,6 @@ images:
     value: db
   - variable: DB_NAME
     value: dss
-  - variable: SSL_ENABLED
-    value: true
   - variable: VIRTUAL_HOST
     value: www.disabilityservicesselector.com,disabilityservicesselector.com,disabilityservicesselector.com.au,www.disabilityservicesselector.com.au,disabilityservicesselector.org,www.disabilityservicesselector.org,disabilityservicesselector.org.au,www.disabilityservicesselector.org.au
   - variable: SMTP_PASSWORD
