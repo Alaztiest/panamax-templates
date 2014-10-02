@@ -1,0 +1,390 @@
+name: Synth Core V2
+description: A Wordpress that can scale horizontally and is load balanced using HAProxy
+keywords: wordpress, mysql, haproxy, horizontal scaling
+recommended: false
+type: Default
+documentation: |-
+  ## MySQL
+  
+  [MySQL](http://www.mysql) is the world's most popular open source database.
+
+  ## WordPress
+
+  [WordPress](http://wordpress.org/) is a web software you can use to create a beautiful website or blog. 
+  
+  ## HAProxy
+
+  [HAProxy](http://www.haproxy.org/) is a reliable, high performance TCP/HTTP load balancer
+   
+  ## Why this template?
+
+  This template give you a real world example that how to use docker and Panamax template to quickly set up a classic 3-layer web application cluster.
+
+  ## System Requirements
+
+  * *RAM:* 512 MB Minimum, 1GB Recommended, 2GB Preferred
+  * *Cores:* 1 core Minimum, 2 core Recommended
+
+  # Images used
+
+  tutum/mysql:latest				The most popular and easy to use mysql image on docker hub.
+  tayloredtechnology/wordpress-nginx-hhvm:latest		A WordPress images that can connect to other database like MySQL, MariaDB.
+  tutum/haproxy:latest				A well maintained load balancer, easy to use by simply linking to it.
+  
+  # Setup and access
+  
+  Run this template under Panamax and you can access the load balanced WordPress on http://localhost/
+
+  # Scalability
+
+  You can add more WordPress instances to the cluster by adding more sections described in the template under category: Application Tier, and add a corresponding link in category: Load Balancer Tier.
+
+  # Note:
+
+  * By default, the media uploaded to WordPress is stored inside container's file system, not int the database. Thus, an image uploaded to one container may not be accessible by the other container.
+  * To solve this, we use volume to share the `/app/wp-content` folder.
+  * To avoid permission problems, please ensure that `/app/wp-contents` exists on your Panamax host before launching this template.
+
+authors:
+- ''
+images:
+- category: Utilities
+  name: Reverse Proxy
+  source: tayloredtechnology/nginx-proxy:latest
+  description: 
+  type: Default
+  expose: ['80','443']
+  ports:
+  - host_port: '80'
+    container_port: '80'
+  - host_port: '443'
+    container_port: '443'
+  links: []
+  environment: []
+  volumes:
+  - host_path: "/var/run/docker.sock"
+    container_path: "/tmp/docker.sock"
+  - host_path: "/var/persistence/ssl"
+    container_path: "/etc/nginx/certificates"
+- category: Utilities
+  name: memcached
+  source: sylvainlasnier/memcached:latest
+  description: 
+  type: Default
+  expose: ['11211']
+  ports:
+  - host_port: '11211'
+    container_port: '11211'
+  links: []
+  environment:
+  - variable: MAX_CONN
+    value: 512
+  - variable: MAX_MEM
+    value: 64
+  volumes: []
+- category: Utilities
+  name: espial
+  source: tayloredtechnology/wordpress-nginx-hhvm:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: db
+    alias: db
+  - service: memcached
+    alias: memcached
+  environment: 
+  - variable: DB_PASS
+    value: password
+  - variable: DB_HOST
+    value: db
+  - variable: DB_NAME
+    value: ttespial
+  - variable: GIT_WORDPRESS
+    value: https://TT-API:2ppROmtPfA5mKKFUagA7XGut@bitbucket.org/NURVING/espial.git
+  - variable: VIRTUAL_HOST
+    value: espial.tayloredtechnology.net
+  volumes:
+  - host_path: "/var/persistence/tayloredtechnology-espial"
+    container_path: "/mnt/hhvm/public/"
+  - host_path: "/var/persistence/uploads/tayloredtechnology-espial"
+    container_path: "/mnt/hhvm/public/wp-content/uploads/"
+- category: DB Tier
+  name: db
+  source: tutum/mysql:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links: []
+  environment:
+  - variable: MYSQL_PASS
+    value: password
+  volumes:
+  - host_path: "/var/persistence/mysql"
+    container_path: "/var/lib/mysql"
+- category: Workers
+  name: Worker1
+  source: tayloredtechnology/php5.6:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: db
+    alias: db
+  environment: 
+  - variable: WORKER_HOST
+    value: www.keidrych.com,keidrych.com,moments.tayloredtechnology.net,experi.tayloredtechnology.net,curate.inspiredwordinternational.com,inspiredwordinternational.com,www.inspiredwordinternational.com,dolphinremovals.com.au,www.dolphinremovals.com.au,luvurday.com,www.luvurday.com,luvurday.com.au,www.luvurday.com.au,www.claudiacarmenanton.com,claudiacarmenanton.com
+  - variable: SMTP_PASSWORD
+    value: "9ra-cqadj7t4"
+  volumes:
+  - host_path: "/var/persistence/keidrych"
+    container_path: "/mnt/hhvm/public/keidrych/"
+  - host_path: "/var/persistence/uploads/keidrych"
+    container_path: "/mnt/hhvm/public/keidrych/wp-content/uploads/"
+  - host_path: "/var/persistence/tayloredtechnology-moments"
+    container_path: "/mnt/hhvm/public/tayloredtechnology_moments/"
+  - host_path: "/var/persistence/uploads/tayloredtechnology-moments"
+    container_path: "/mnt/hhvm/public/tayloredtechnology_moments/wp-content/uploads/"
+  - host_path: "/var/persistence/tayloredtechnology-experi"
+    container_path: "/mnt/hhvm/public/tayloredtechnology_experi/"
+  - host_path: "/var/persistence/uploads/tayloredtechnology-experi"
+    container_path: "/mnt/hhvm/public/tayloredtechnology_experi/wp-content/uploads/"
+  - host_path: "/var/persistence/inspiredwordinternational-curate"
+    container_path: "/mnt/hhvm/public/inspiredword_curate/"
+  - host_path: "/var/persistence/uploads/inspiredwordinternational-curate"
+    container_path: "/mnt/hhvm/public/inspiredword_curate/wp-content/uploads/"
+  - host_path: "/var/persistence/inspiredwordinternational"
+    container_path: "/mnt/hhvm/public/inspiredword_1/"
+  - host_path: "/var/persistence/uploads/inspiredwordinternational"
+    container_path: "/mnt/hhvm/public/inspiredword_1/wp-content/uploads/"
+  - host_path: "/var/persistence/dolphinremovals"
+    container_path: "/mnt/hhvm/public/dolphinremovals/"
+  - host_path: "/var/persistence/uploads/dolphinremovals"
+    container_path: "/mnt/hhvm/public/dolphinremovals/wp-content/uploads/"
+  - host_path: "/var/persistence/luvurday"
+    container_path: "/mnt/hhvm/public/luvurday/"
+  - host_path: "/var/persistence/uploads/luvurday"
+    container_path: "/mnt/hhvm/public/luvurday/wp-content/uploads/"
+  - host_path: "/var/persistence/claudiacarmenanton"
+    container_path: "/mnt/hhvm/public/claudiacarmenanton/"
+  - host_path: "/var/persistence/uploads/claudiacarmenanton"
+    container_path: "/mnt/hhvm/public/claudiacarmenanton/wp-content/uploads/"
+- category: WebSites
+  name: keidrych
+  source: tayloredtechnology/nginx-router:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: memcached
+    alias: memcached
+  environment: 
+  - variable: DB_PASS
+    value: password
+  - variable: DB_HOST
+    value: db
+  - variable: DB_NAME
+    value: keidrych
+  - variable: VIRTUAL_HOST
+    value: www.keidrych.com,keidrych.com
+  - variable: SMTP_PASSWORD
+    value: "9ra-cqadj7t4"
+  volumes:
+  - host_path: "/var/persistence/keidrych"
+    container_path: "/mnt/hhvm/public/keidrych/"
+  - host_path: "/var/persistence/uploads/keidrych"
+    container_path: "/mnt/hhvm/public/keidrych/wp-content/uploads/"
+- category: WebSites
+  name: tayloredtechnology~moments
+  source: tayloredtechnology/nginx-router:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: memcached
+    alias: memcached
+  environment: 
+  - variable: DB_PASS
+    value: password
+  - variable: DB_HOST
+    value: db
+  - variable: DB_NAME
+    value: ttmoments
+  - variable: SSL_ENABLED
+    value: true
+  - variable: VIRTUAL_HOST
+    value: moments.tayloredtechnology.net
+  - variable: SMTP_PASSWORD
+    value: "6nyf8gne2ys3"
+  volumes:
+  - host_path: "/var/persistence/tayloredtechnology-moments"
+    container_path: "/mnt/hhvm/public/tayloredtechnology_moments/"
+  - host_path: "/var/persistence/uploads/tayloredtechnology-moments"
+    container_path: "/mnt/hhvm/public/tayloredtechnology_moments/wp-content/uploads/"
+- category: WebSites
+  name: tayloredtechnology~experi
+  source: tayloredtechnology/nginx-router:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: memcached
+    alias: memcached
+  environment: 
+  - variable: DB_PASS
+    value: password
+  - variable: DB_HOST
+    value: db
+  - variable: DB_NAME
+    value: ttexperi
+  - variable: SSL_ENABLED
+    value: true
+  - variable: VIRTUAL_HOST
+    value: experi.tayloredtechnology.net
+  - variable: SMTP_PASSWORD
+    value: "6nyf8gne2ys3"
+  volumes:
+  - host_path: "/var/persistence/tayloredtechnology-experi"
+    container_path: "/mnt/hhvm/public/tayloredtechnology_experi/"
+  - host_path: "/var/persistence/uploads/tayloredtechnology-experi"
+    container_path: "/mnt/hhvm/public/tayloredtechnology_experi/wp-content/uploads/"
+- category: WebSites
+  name: inspiredword~curate
+  source: tayloredtechnology/nginx-router:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: memcached
+    alias: memcached
+  environment: 
+  - variable: DB_PASS
+    value: password
+  - variable: DB_HOST
+    value: db
+  - variable: DB_NAME
+    value: inspiredwordcurate
+  - variable: SSL_ENABLED
+    value: true
+  - variable: VIRTUAL_HOST
+    value: curate.inspiredwordinternational.com
+  - variable: SMTP_PASSWORD
+    value: "7urlcaaq6ve5"
+  volumes:
+  - host_path: "/var/persistence/inspiredwordinternational-curate"
+    container_path: "/mnt/hhvm/public/inspiredword_curate/"
+  - host_path: "/var/persistence/uploads/inspiredwordinternational-curate"
+    container_path: "/mnt/hhvm/public/inspiredword_curate/wp-content/uploads/"
+- category: WebSites
+  name: inspiredword
+  source: tayloredtechnology/nginx-router:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: memcached
+    alias: memcached
+  environment: 
+  - variable: DB_PASS
+    value: password
+  - variable: DB_HOST
+    value: db
+  - variable: DB_NAME
+    value: inspiredword
+  - variable: SSL_ENABLED
+    value: true
+  - variable: VIRTUAL_HOST
+    value: inspiredwordinternational.com,www.inspiredwordinternational.com
+  - variable: SMTP_PASSWORD
+    value: "7urlcaaq6ve5"
+  volumes:
+  - host_path: "/var/persistence/inspiredwordinternational"
+    container_path: "/mnt/hhvm/public/inspiredword_1/"
+  - host_path: "/var/persistence/uploads/inspiredwordinternational"
+    container_path: "/mnt/hhvm/public/inspiredword_1/wp-content/uploads/"
+- category: WebSites
+  name: dolphinremovals
+  source: tayloredtechnology/nginx-router:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: memcached
+    alias: memcached
+  environment: 
+  - variable: DB_PASS
+    value: password
+  - variable: DB_HOST
+    value: db
+  - variable: DB_NAME
+    value: dolphinremoval
+  - variable: VIRTUAL_HOST
+    value: dolphinremovals.com.au,www.dolphinremovals.com.au
+  - variable: SMTP_PASSWORD
+    value: "34n5tcj6-t-9"
+  volumes:
+  - host_path: "/var/persistence/dolphinremovals"
+    container_path: "/mnt/hhvm/public/dolphinremovals/"
+  - host_path: "/var/persistence/uploads/dolphinremovals"
+    container_path: "/mnt/hhvm/public/dolphinremovals/wp-content/uploads/"
+- category: WebSites
+  name: luvurday
+  source: tayloredtechnology/nginx-router:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: memcached
+    alias: memcached
+  environment: 
+  - variable: DB_PASS
+    value: password
+  - variable: DB_HOST
+    value: db
+  - variable: DB_NAME
+    value: luvurday
+  - variable: VIRTUAL_HOST
+    value: luvurday.com,www.luvurday.com,luvurday.com.au,www.luvurday.com.au
+  - variable: SMTP_PASSWORD
+    value: "283eko5wyhb2"
+  volumes:
+  - host_path: "/var/persistence/luvurday"
+    container_path: "/mnt/hhvm/public/luvurday/"
+  - host_path: "/var/persistence/uploads/luvurday"
+    container_path: "/mnt/hhvm/public/luvurday/wp-content/uploads/"
+- category: WebSites
+  name: claudiacarmenanton
+  source: tayloredtechnology/nginx-router:latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links:
+  - service: memcached
+    alias: memcached
+  environment: 
+  - variable: DB_PASS
+    value: password
+  - variable: DB_HOST
+    value: db
+  - variable: DB_NAME
+    value: claudiacarmenanton
+  - variable: VIRTUAL_HOST
+    value: www.claudiacarmenanton.com,claudiacarmenanton.com
+  - variable: SMTP_PASSWORD
+    value: "2awnlbd645t3"
+  volumes:
+  - host_path: "/var/persistence/claudiacarmenanton"
+    container_path: "/mnt/hhvm/public/claudiacarmenanton/"
+  - host_path: "/var/persistence/uploads/claudiacarmenanton"
+    container_path: "/mnt/hhvm/public/claudiacarmenanton/wp-content/uploads/"
