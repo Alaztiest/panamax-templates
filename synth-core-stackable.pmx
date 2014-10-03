@@ -28,7 +28,7 @@ documentation: |-
   # Images used
 
   tutum/mysql:latest				The most popular and easy to use mysql image on docker hub.
-  tayloredtechnology/wordpress-nginx-hhvm:latest		A WordPress images that can connect to other database like MySQL, MariaDB.
+  tayloredtechnology/nginx-php5.6:latest		A WordPress images that can connect to other database like MySQL, MariaDB.
   tutum/haproxy:latest				A well maintained load balancer, easy to use by simply linking to it.
   
   # Setup and access
@@ -84,7 +84,7 @@ images:
   volumes: []
 - category: Utilities
   name: espial
-  source: tayloredtechnology/wordpress-nginx-hhvm:latest
+  source: tayloredtechnology/nginx-php5.6:latest
   description: 
   type: Default
   expose: []
@@ -126,7 +126,7 @@ images:
     container_path: "/var/lib/mysql"
 - category: WebSites
   name: keidrych
-  source: tayloredtechnology/wordpress-nginx-hhvm:latest
+  source: tayloredtechnology/nginx-php5.6:latest
   description: 
   type: Default
   expose: []
@@ -154,7 +154,7 @@ images:
     container_path: "/mnt/hhvm/public/wp-content/uploads/"
 - category: WebSites
   name: tayloredtechnology~moments
-  source: tayloredtechnology/wordpress-nginx-hhvm:latest
+  source: tayloredtechnology/nginx-php5.6:latest
   description: 
   type: Default
   expose: []
@@ -184,7 +184,7 @@ images:
     container_path: "/mnt/hhvm/public/wp-content/uploads/"
 - category: WebSites
   name: tayloredtechnology~experi
-  source: tayloredtechnology/wordpress-nginx-hhvm:latest
+  source: tayloredtechnology/nginx-php5.6:latest
   description: 
   type: Default
   expose: []
@@ -214,7 +214,7 @@ images:
     container_path: "/mnt/hhvm/public/wp-content/uploads/"
 - category: WebSites
   name: inspiredword~curate
-  source: tayloredtechnology/wordpress-nginx-hhvm:latest
+  source: tayloredtechnology/nginx-php5.6:latest
   description: 
   type: Default
   expose: []
@@ -244,7 +244,7 @@ images:
     container_path: "/mnt/hhvm/public/wp-content/uploads/"
 - category: WebSites
   name: inspiredword
-  source: tayloredtechnology/wordpress-nginx-hhvm:latest
+  source: tayloredtechnology/nginx-php5.6:latest
   description: 
   type: Default
   expose: []
@@ -274,7 +274,7 @@ images:
     container_path: "/mnt/hhvm/public/wp-content/uploads/"
 - category: WebSites
   name: dolphinremovals
-  source: tayloredtechnology/wordpress-nginx-hhvm:latest
+  source: tayloredtechnology/nginx-php5.6:latest
   description: 
   type: Default
   expose: []
@@ -302,7 +302,7 @@ images:
     container_path: "/mnt/hhvm/public/wp-content/uploads/"
 - category: WebSites
   name: luvurday
-  source: tayloredtechnology/wordpress-nginx-hhvm:latest
+  source: tayloredtechnology/nginx-php5.6:latest
   description: 
   type: Default
   expose: []
@@ -330,7 +330,7 @@ images:
     container_path: "/mnt/hhvm/public/wp-content/uploads/"
 - category: WebSites
   name: claudiacarmenanton
-  source: tayloredtechnology/wordpress-nginx-hhvm:latest
+  source: tayloredtechnology/nginx-php5.6:latest
   description: 
   type: Default
   expose: []
